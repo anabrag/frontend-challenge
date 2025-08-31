@@ -18,7 +18,7 @@ const getRecommendations = (formData = { selectedPreferences: [], selectedFeatur
   }
 };
 
-const filterProductsByPreferences = (products, selectedPreferences) => {
+export const filterProductsByPreferences = (products, selectedPreferences) => {
   if (!selectedPreferences || selectedPreferences.length === 0) return products;
 
   return products.filter((product) =>
@@ -26,7 +26,7 @@ const filterProductsByPreferences = (products, selectedPreferences) => {
   );
 };
 
-const calculateProductScore = (product, formData) => {
+export const calculateProductScore = (product, formData) => {
   let score = 0;
   const selectedPreferences = formData.selectedPreferences || [];
   const selectedFeatures = formData.selectedFeatures || [];
@@ -42,11 +42,11 @@ const calculateProductScore = (product, formData) => {
   return score;
 };
 
-const sortProductsByScore = (products) => {
+export const sortProductsByScore = (products) => {
   return [...products].sort((productA, productB) => productB.score - productA.score);
 };
 
-const getSingleProduct = (sortedProducts) => {
+export const getSingleProduct = (sortedProducts) => {
   if (!sortedProducts || sortedProducts.length === 0) return null;
   return sortedProducts[sortedProducts.length - 1];
 };
